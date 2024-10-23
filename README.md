@@ -3,6 +3,9 @@
 
 Welcome to the Pokémon Search App! This application allows users to search for Pokémon by name or ID, view their details, and navigate through the Pokémon using Previous and Next buttons.
 
+## Deployed Live Url
+https://pokemon-search-app-ashen.vercel.app/
+
 ## Features
 
 - Search for Pokémon by name or ID.
