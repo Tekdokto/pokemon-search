@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { usePokemonApi } from "./managements/hooks/api";
+import Pokemon from "./components/pokemon";
 
 function App() {
+  const { pokemon, loading, error, fetchPokemon, clearCachedPokemon } = usePokemonApi();
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (query) fetchPokemon(query.toLowerCase());
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="min-h-screen flex flex-col items-center justify-center bg-blue-50 p-5">
+      <h1 className="text-4xl font-bold mb-5">Pokémon Search App</h1>
+      <form onSubmit={handleSearch} className="flex mb-5">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Enter Pokémon name or ID"
+          className="border rounded-l-md p-2"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white rounded-r-md p-2 transition-transform transform hover:scale-105"
         >
-          Learn React
-        </a>
-      </header>
+          Search
+        </button>
+      </form>
+
+      <Pokemon
+        pokemon={pokemon}
+        loading={loading}
+        error={error}
+        fetchPokemon={fetchPokemon}
+        clearCachedPokemon={clearCachedPokemon}  // Pass the function
+      />
     </div>
   );
 }
