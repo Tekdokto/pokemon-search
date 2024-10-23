@@ -135,4 +135,5 @@ This project is open source and available under the MIT License as the LICENSE.
 - PokéAPI: https://pokeapi.co/ for providing Pokémon data.
 - Tailwind CSS: https://tailwindcss.com/ for the beautiful UI framework.
 - React: https://reactjs.org/ for building user interfaces.
+- Vercel: https://vercel.com/ for deploying the pokemon search application
 ```
